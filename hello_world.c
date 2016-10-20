@@ -1,6 +1,15 @@
 #include <stdio.h>
 
 int main() {
-    printf("alleluja \n");
+    int car;
+    printf("int: ");
+    scanf("%d", &car);
+    printf("%d", car);
+    if (car < 0) {
+        printf("bababa");
+    }
+    else {
+        printf("buobadusbjk");
+    }
 return 0;
 }
