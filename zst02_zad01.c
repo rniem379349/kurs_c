@@ -6,7 +6,7 @@ float kwa(int a, int b, int c, int x) {
 }
 
 int main() {
-	int a, b, c, x, ilosc;
+	int i, a, b, c, x, ilosc;
 	printf("Podaj a:");
 	scanf("%d", &a);
 	printf("Podaj b:");
@@ -17,7 +17,7 @@ int main() {
 	scanf("%d", &ilosc);
 	for(i = 0; i < ilosc; i++) 
 	{
-		printf()
+		//printf()
 		printf("%.2f \n",kwa(1, 1, 1, 2));
 	}
 	return 0;
