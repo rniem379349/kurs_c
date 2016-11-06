@@ -24,7 +24,7 @@ int NWW(int a, int b)
     return wynik;
 }
 
-int main() 
+int main()
 {
     NWW(20,30);
     return 0;

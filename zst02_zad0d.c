@@ -3,23 +3,23 @@
 
 int NWD(int a, int b)
 {
-    while (a != b)
+  while (a != b)
+  {
+    if (a < b)
     {
-        if (a < b)
-        {
-        b -= a;
-        }
-        else
-        {
-        a -= b;
-        }
+      b -= a;
     }
-    printf("%d \n", a);
-    return a;
+    else
+    {
+      a -= b;
+    }
+  }
+  printf("%d \n", a);
+  return a;
 }
 
-int main() 
+int main()
 {
-    NWD(28,24);
-    return 0;
+  NWD(28,24);
+  return 0;
 }

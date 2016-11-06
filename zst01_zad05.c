@@ -6,14 +6,14 @@ int main() {
     int mn, mx = 0;
     int warunek = 1;
     printf("Podaj liczbe: ");
-    scanf("%d ", &var);
+    scanf("%d", &var);
     printf("\nPodana liczba: %d \n", var);
     mn = var;
     mx = var;
     while (warunek == 1)
     {
         printf("Podaj liczbe:");
-        scanf("%d ", &var);
+        scanf("%d", &var);
         printf("\nPodana liczba: %d \n", var);
         if (var > 0)
         {
