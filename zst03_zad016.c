@@ -4,7 +4,7 @@
 int histo()
 {
 	char seek;
-	int licznik;
+	int licznik, j;
 	int alfabet[32];
 	for(licznik = 0; licznik < 32; licznik++)
 	{
@@ -22,7 +22,13 @@ int histo()
 	}
 	for(licznik = 0; licznik < 26; licznik++)
 	{
-		printf("%c: %d\n", licznik + 97,alfabet[licznik]);
+		printf("%c: %d:", licznik + 97, alfabet[licznik]);
+		for(j = 0; j < alfabet[licznik]; j++)
+		{
+			putchar(' ');
+		}
+		putchar('*');
+		putchar('\n');
 	}
 }
 
