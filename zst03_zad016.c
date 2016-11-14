@@ -25,9 +25,8 @@ int histo()
 		printf("%c: %d:", licznik + 97, alfabet[licznik]);
 		for(j = 0; j < alfabet[licznik]; j++)
 		{
-			putchar(' ');
+			putchar('*');
 		}
-		putchar('*');
 		putchar('\n');
 	}
 }
