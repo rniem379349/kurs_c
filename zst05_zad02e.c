@@ -10,17 +10,16 @@ typedef struct Node_
 
 int list_size(Node *node)
 {
-  int size = 0;
-  Node *original_node = node;
+  int size = 1;
+  int original_node_val = node -> val;
   do
   {
     printf("przejscie nr %d: %d %d\n", size, node -> val, node -> nextval -> val);
     node = node -> nextval;
     size++;
-  } while (node != original_node);
+  } while (node -> nextval -> val != original_node_val);
   return size;
 }
-
 
 int main(int argc, char const *argv[]) {
   Node *x1 = malloc(sizeof(Node));
@@ -28,7 +27,7 @@ int main(int argc, char const *argv[]) {
   Node *x3 = malloc(sizeof(Node));
   Node *x4 = malloc(sizeof(Node));
   Node *x5 = malloc(sizeof(Node));
-  x1 -> val = 2;
+  x1 -> val = 3;
   x1 -> nextval = x2;
   x2 -> val = 5;
   x2 -> nextval = x3;
@@ -38,9 +37,6 @@ int main(int argc, char const *argv[]) {
   x4 -> nextval = x5;
   x5 -> val = 2;
   x5 -> nextval = x1;
-  printf("%d\n", list_size(x4));
-  printf("%d\n", list_size(x1));
-  printf("%d\n", list_size(x3));
-  // licz(x4);
+  printf("%d", list_size(x3));
   return 0;
 }

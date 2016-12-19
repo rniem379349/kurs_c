@@ -1,78 +1,37 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define ROZMIAR 2
 
-typedef struct Node_
+typedef struct wezel_
 {
-  struct Node_ *NextNode;
-  int val;
-} Node;
+  struct wezel_ *pNastepny;
+  int iWartosc;
+} wezel;
 
-void podzial(Node *before_start, Node *start, Node *end)
+wezel *pPierwszy;
+wezel *pDrugi;
+
+int comp(const void *p, const void *q)
 {
-  Node *p,*q;
-  Node *licznik_przed = start;
-  Node *new_before_start;
-  int count = 0;
-  Node *licznik = before_start;
-  while (licznik_przed != end)
-  {
-    printf("%d\n", licznik_przed -> val);
-    licznik_przed = licznik_przed -> NextNode;
-  }
-  printf("%d\n", end -> val);
-  printf("\n\n");
-
-  p = start;
-  do
-  {
-    q = p -> NextNode;
-    printf("iteration nr %d:\nq -> val: %d\nstart -> val: %d\n", count, q -> val, start -> val);
-    if (q -> val < start -> val)
-    {
-      printf("%d smaller than %d\n", q -> val, start -> val);
-      before_start -> NextNode = q;
-      p -> NextNode = q -> NextNode;
-      q -> NextNode = start;
-      new_before_start = q;
-      new_before_start -> NextNode = start;
-    }
-    else
-    {
-      printf("%d NOT smaller than %d\n", q -> val, start -> val);
-      p = p -> NextNode;
-      // q = q -> NextNode;
-    }
-    count++;
-  } while (q != end);
-
-  printf("\n\n\n");
-
-  while (licznik != end)
-  {
-    printf("%d\n", licznik -> val);
-    licznik = licznik -> NextNode;
-  }
-  printf("%d\n", end -> val);
-  printf("\n\n");
+  /*
+  Tak sie porownuje dwa obiekty za pomoca wskaznikow!
+  Funkcji przekazujemy dwa wskazniki do jakichs dwoch obiektow (jesli chcemy np tylko posortowac to mozna
+  utworzyc wskazniki do voidow), potem tworzymy wskazniki do nich wewnatrz funkcji i na koniec
+  odnosimy sie do atrybutow tych obiektow poprzez operator '->' i dzialamy na nich
+  Trzeba pamietac, zeby do funkcji przekazac adresy tych obiektow (operator '&')
+  */
+  wezel *pp = (wezel*) p;
+  wezel *qq = (wezel*) q;
+  if (pp -> iWartosc > qq -> iWartosc) return 1;
+  else if (pp -> iWartosc < qq -> iWartosc) return -1;
+  else return 0;
 }
 
 int main(int argc, char const *argv[]) {
-  Node *x1 = malloc(sizeof(Node));
-  Node *x2 = malloc(sizeof(Node));
-  Node *x3 = malloc(sizeof(Node));
-  Node *x4 = malloc(sizeof(Node));
-  Node *x5 = malloc(sizeof(Node));
-  x1 -> val = 4;
-  x1 -> NextNode = x2;
-  x2 -> val = 5;
-  x2 -> NextNode = x3;
-  x3 -> val = 8;
-  x3 -> NextNode = x4;
-  x4 -> val = 3;
-  x4 -> NextNode = x5;
-  x5 -> val = 2;
-  x5 -> NextNode = NULL;
-  podzial(x1,x2,x5);
+  pPierwszy -> iWartosc = 10;
+  pPierwszy -> pNastepny = pDrugi;
+  pDrugi -> iWartosc = 5;
+  pDrugi -> pNastepny = NULL;
   return 0;
 }
