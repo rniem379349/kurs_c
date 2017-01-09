@@ -21,11 +21,22 @@ void del_position(wezel *node);
 
 void search(wezel *node)
 {
+  printf("ee\n");
+  wezel *temp = malloc(sizeof(wezel));
   while(node != NULL)
   {
+    printf("e\n");
     printf("Autor: %s\nTytul: %s\nIlosc: %d\n\n", node -> dane.autor, node -> dane.tytul, node -> dane.ilosc);
-    if (node -> dane.ilosc == 0) del_position(node);
-    node = node -> nastepny;
+    if (node -> dane.ilosc == 0)
+    {
+      printf("eeeeeeee\n");
+      temp = node -> nastepny;
+      printf("%s\n", temp -> dane.autor);
+      del_position(node);
+    }
+    printf("eddd\n");
+    node = temp;
+    printf("after edd: \n");
   }
 }
 
@@ -41,9 +52,11 @@ void del_position(wezel *node)
   }
   else if(node -> poprzedni != NULL && node -> nastepny != NULL)
   {
+    printf("ee\n");
     node -> poprzedni -> nastepny = node -> nastepny;
     node -> nastepny -> poprzedni = node -> poprzedni;
   }
+  free(node -> dane.tytul);
   free(node);
 }
 
@@ -103,7 +116,6 @@ int main(int argc, char const *argv[]) {
   // printf("%s\n", trzeci -> dane.autor);
   // printf("%f\n", trzeci -> dane.cena);
   // printf("%d\n", trzeci -> dane.ilosc);
-  search(pierwszy);
   search(pierwszy);
   printf("\n\nNastepnik pierwszego: %s\n", pierwszy -> nastepny -> dane.autor);
   printf("\n\nPoprzednik trzeciego: %s\n", trzeci -> poprzedni -> dane.autor);
